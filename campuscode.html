@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Wheel Effect</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f7fa;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+        }
+        
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 40px;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+        
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                #4a6cf7 0deg 60deg,
+                #f3735a 60deg 120deg,
+                #5dd39e 120deg 180deg,
+                #ffd166 180deg 240deg,
+                #9c79f2 240deg 300deg,
+                #49bef7 300deg 360deg
+            );
+            position: relative;
+            transition: transform 2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: rotate(0deg);
+            will-change: transform;
+        }
+        
+        .wheel-container:hover .wheel {
+            transform: rotate(360deg);
+        }
+        
+        .center {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .wheel-container:hover .center {
+            background-color: #f3f4f6;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .spoke {
+            position: absolute;
+            width: 4px;
+            height: 120px;
+            background-color: rgba(255, 255, 255, 0.8);
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            z-index: 5;
+        }
+        
+        .spoke:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); }
+        .spoke:nth-child(2) { transform: translate(-50%, -100%) rotate(60deg); }
+        .spoke:nth-child(3) { transform: translate(-50%, -100%) rotate(120deg); }
+        .spoke:nth-child(4) { transform: translate(-50%, -100%) rotate(180deg); }
+        .spoke:nth-child(5) { transform: translate(-50%, -100%) rotate(240deg); }
+        .spoke:nth-child(6) { transform: translate(-50%, -100%) rotate(300deg); }
+        
+        .instructions {
+            margin-top: 20px;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .feature-list {
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .feature-list h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .feature-list ul {
+            padding-left: 20px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Rotating Wheel</h1>
+        
+        <div class="wheel-container">
+            <div class="wheel">
+                <div class="spoke"></div>
+                <div class="spoke"></div>
+                <div class="spoke"></div>
+                <div class="spoke"></div>
+                <div class="spoke"></div>
+                <div class="spoke"></div>
+            </div>
+            <div class="center">HOVER ME</div>
+        </div>
+        
+        <div class="instructions">
+            Hover over the wheel to see it rotate, remove hover to reset
+        </div>
+        
+        <div class="feature-list">
+            <h2>Implementation Features:</h2>
+            <ul>
+                <li>Smooth 360-degree rotation on hover</li>
+                <li>CSS transition for fluid animation effect</li>
+                <li>Returns to original position when hover is removed</li>
+                <li>Fully responsive design</li>
+                <li>Visual spokes and center hub for better aesthetics</li>
+                <li>Colorful segments using CSS conic gradient</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
